@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- sql mapper -->
+<mapper namespace="customer"> <!-- namespace : 일종의 식별역할의 변수 -->
+
+	<!-- id : 식별자 -> 유일한 값 resultType : 리턴 받을 리스트의 타입(리턴은 list가 기본 값) -->
+	<select id="selectAll" resultType="day3.dto.Customer">
+		select * from customer
+	</select>
+	
+	<!-- resultType : 리턴 후 데이터 타입 -->
+	<select id="selectOne" resultType="day3.dto.Customer" parameterType="int">
+		select * from customer where idx=#{idx}
+	</select>
+
+	<!-- 파라미터가 여러개의 값일 경우, Map(key, value) or DTO class -->
+	<insert id="insert" parameterType="day3.dto.Customer" useGeneratedKeys="true" keyColumn="idx" keyProperty="idx">
+	<!-- useGeneratedKeys="true": insert후 자동 증가 컬럼 값 가져오기 -->
+	<!-- keyColumn: DB의 자동증가 컬럼, keyProperty: 매핑되는 dto클래스의 변수명 -->
+		insert into customer(name, password, email, address, gender, age, hobby)
+		values (#{name}, #{password}, #{email}, #{address}, #{gender}, #{age}, #{hobby})
+	</insert>
+
+	<delete id="delete" parameterType="int">
+		delete from customer where idx = #{idx};
+	</delete>
+	
+	<update id="update" parameterType="day3.dto.Customer">
+		update customer set email = #{email}, address = #{address} where idx = #{idx};
+	</update>
+</mapper>
+<!-- ${} : 표현식, 괄호 안 수식에 대한 결과 값을 출력 #{} : 파라미터, 값을 문자열로 처리. => 수식을 이용한 해킹 
+	방지 -->
+
+
+
+
+
+
+

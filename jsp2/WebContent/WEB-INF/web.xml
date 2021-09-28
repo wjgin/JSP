@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>jsp2</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>home.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
+<!-- http:///localhost:8082/jsp2/ 와 같이 파일명을 지정하지 않고 context(프로젝트 이름)
+으로만 요청했을 때, 응답으로 처리될 파일을 지정 위부터 순서대로 있는 경우
+	web.xml 파일은 deployment descriptor(배포 기술자)
+	: 웹 프로젝트의 일반적인 사항들을 설정하는 파일
+	: tomcat 서버가 웹 애플리케이션을 어떻게 동작시킬지 알려주는 파일
+ -->

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>day3-4 member register</title>
+<link rel="stylesheet" href="../css/member.css">
+<script src="https://kit.fontawesome.com/a9b46edd75.js"
+	crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<script>
+        function validCheck() {
+            const frm = document.frmReg;
+            // 1. 패스워드: 8자리 이상
+            if (frm.password.value.length < 8) {
+                alert('패스워드는 8글자 이상 입니다.');
+                frm.password.focus(); // 커서를 이동
+                return false;
+            }
+            // 2. 나이: 태그 min, max 무시 -> 20 ~ 70
+            if (frm.age.value < 20 || frm.age.value > 70) {
+                alert('나이는 20~70 사이 입니다.');
+                return false;
+            }
+            // 3. 취미 체크 확인
+            for (let i = 0; i < frm.hobby.length; i++) {
+                // hobby 배열에 하나라도 체크되면 true 리턴
+                if (frm.hobby[i].checked) 
+                    return true;
+            }
+                alert('취미를 하나 이상 선택')
+                return false
+        }
+        
+    </script>
+	<div style="width: 70%; margin: auto;">
+		<div>
+			<a href="#" class="navbar__hamburger"> <i class="fas fa-bars"></i>
+			</a>
+			<h3>JSP1 프로젝트[6] - 회원 등록</h3>
+		</div>
+
+		<form action="registration.jsp" method="post" name="frmReg"
+			onsubmit="return validCheck()">
+			<table style="width: 100%; margin: auto;">
+				<tr>
+					<!-- required 속성: 필수 입력 값 -->
+					<td class="col1">이름</td>
+					<td><input type="text" name="name" placeholder="이름을 입력하세요."
+						required></td>
+				</tr>
+				<tr>
+					<td class="col1">패스워드</td>
+					<td><input type="password" name="password" required></td>
+				</tr>
+				<tr>
+					<td class="col1">이메일</td>
+					<td><input type="email" name="email" required></td>
+				</tr>
+				<tr>
+					<td class="col1">나이</td>
+					<!-- number 타입은 min, max 지정 가능 -->
+					<td><input type="number" name="age" min="10" max="99"
+						value="20" required></td>
+				</tr>
+				<tr>
+					<td class="col1">주소</td>
+					<td>
+						<!-- 선택 리스트 --> <select id = addr_select name="address" required>
+							<!-- option 태그 안에 문자열 : 화면, value : 서버 전송 값 -->
+							<!-- selected 옵션은 기본선택 -->
+							<option value="서울" selected>서울</option>
+							<option value="인천">인천</option>
+							<option value="대전">대전</option>
+							<option value="광주">광주</option>
+							<option value="부산">부산</option>
+							<option value="기타">기타</option>
+					</select> 
+					<span id="addr_id" style="display: none"><input type="text" name="addr_etc"
+							disabled="disabled" placeholder="기타 지역을 입력하세요."> </span>
+					</td>
+				</tr>
+				<tr>
+					<td class="col1">성별</td>
+					<td><input type="radio" name="gender" value="male" id="male"
+						checked> <label for="male">남자</label> <input type="radio"
+						name="gender" value="female" id="female"> <label
+						for="female">여자</label></td>
+				</tr>
+				<tr>
+					<td class="col1">취미</td>
+					<!-- 여러개를 복수로 선택할 수 있는 체크박스 -->
+					<!-- 서버로 전송시 배열로 처리 => name을 동일하게 -->
+					<td>
+						<!-- 복수선택 가능, 여러 개 선택 시 배열로 저장 --> <input type="checkbox"
+						name="hobby" value="축구" id="football" checked> <label
+						for="football">축구 </label> <!--라벨을 선택하면 체크박스 선택--> <input
+						type="checkbox" name="hobby" value="농구" id="baketball"> <label
+						for="baketball">농구</label> <input type="checkbox" name="hobby"
+						value="스키" id="ski"> <label for="ski">스키</label> <input
+						type="checkbox" name="hobby" value="달리기" id="running"> <label
+						for="running">달리기</label>
+					</td>
+				</tr>
+				<tr>
+
+					<td colspan="2">
+						<div class="button">
+							<input type="submit" value="가입하기"> <input type="reset"
+								value="다시쓰기">
+						</div>
+					</td>
+				</tr>
+
+			</table>
+		</form>
+	</div>
+	<script type="text/javascript">
+	document.getElementById("addr_select").addEventListener("change",function(){
+		if(this.value=="기타"){
+			document.getElementById("addr_id").style.display="inline-block";
+			document.frmReg.addr_etc.disabled=false;
+		}else {
+			document.getElementById("addr_id").style.display="none";
+			document.frmReg.addr_etc.disabled=true;
+		}
+		
+	});
+	</script>
+</body>
+
+</html>
