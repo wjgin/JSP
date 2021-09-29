@@ -22,6 +22,7 @@
   </environments>
   <mappers>
     <mapper resource="mybatis/freeboard.xml"/>
+    <mapper resource="mybatis/comment.xml"/>
   </mappers>
 </configuration>
 

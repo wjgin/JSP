@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="dto.Comment"%>
+<%@page import="dao.CommentDao"%>
 <%@page import="dto.Freeboard"%>
 <%@page import="dao.FreeboardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -8,6 +11,10 @@
 	
 	FreeboardDao dao = FreeboardDao.getInstance();
 	Freeboard bean = dao.getOne(idx);
+	
+	CommentDao cdao = CommentDao.getInstance();
+	List<Comment> cmts = cdao.getComment(idx);
+	request.setAttribute("cmtlist", cmts);
 	
 	request.setAttribute("bean", bean);
 	pageContext.forward("detailView.jsp");

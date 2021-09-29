@@ -16,12 +16,12 @@
 		<ul id="main">
 			<li>
 				<ul class="row">
-					<li>번호</li>
-					<li>제목</li>
-					<li>작성자</li>
-					<li>조회수</li>
-					<li>작성일</li>
-				</ul>+--+--
+					<li><b>번호</b></li>
+					<li><b>제목</b></li>
+					<li><b>작성자</b></li>
+					<li><b>조회수</b></li>
+					<li><b>작성일</b></li>
+				</ul>
 			</li>
 			<c:forEach var="vo" items="${list}">
 				<!-- vo가 Freeboard타입  blists.getList() 실행-->

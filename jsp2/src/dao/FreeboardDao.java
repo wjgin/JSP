@@ -52,7 +52,7 @@ public class FreeboardDao {
 	
 	public void insert(Freeboard dto) {
 		SqlSession mapper = sqlFactory.openSession();
-		mapper.insert("insert", dto);
+		mapper.insert("freeboard.insert", dto);
 		mapper.commit();
 		mapper.close();
 	}
@@ -62,6 +62,21 @@ public class FreeboardDao {
 		mapper.update("update", dto);
 		mapper.commit();
 		mapper.close();
+	}
+	
+	public int delete(Map<String, Object> map) {
+		SqlSession mapper = sqlFactory.openSession();
+		int n = mapper.delete("delete", map);
+		mapper.commit();
+		mapper.close();
+		return n;
+	}
+	
+	public Freeboard psswordCheck(Map<String, Object> map) {
+		SqlSession mapper = sqlFactory.openSession();
+		Freeboard dto = mapper.selectOne("passwordCheck", map);
+		mapper.close();
+		return dto;
 	}
 	
 }

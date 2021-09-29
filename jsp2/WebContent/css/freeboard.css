@@ -2,11 +2,15 @@ ul {
 	list-style: none;
 	padding-inline-start:0px;
 }
+pre {
+	font-size: 1.2em;
+	padding: 10px; 
+	color: purple;
+}
 #main{
 		display:flex;
 		flex-direction:column;
 		list-style: none;
-
 	}
 .row , .row-2{
 		display: flex;
@@ -41,7 +45,7 @@ ul {
 	color:#1A237E;
 }
 #content{
-	min-height: 50vh;
+	min-height: 40%;
 }
 #content li:first-child {
 	padding: 3px;
@@ -98,16 +102,47 @@ span {
 	display: inline-block;
 	color:  #4080bf;
 }
-
 .now {
 	color : gray;
 	width:40%;
 	display: inline-block;
-	
 }
+/* 비밀번호 모달 */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 10px;
+    border: 3px solid#4080bf;
+    width: 30%; /* Could be more or less, depending on screen size */
+    font-size: 1.1em;
+}
+/* The Close Button */
+.close {
+    color: #aaa;
+}
+
+.close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 @media screen and (max-width:768px) {
    .row {
         flex-direction: column;
     }
-  
 }
+
+
