@@ -13,10 +13,10 @@ public class PageDto {
 	private int endPage; // 꼭 필요하지 않습니다.
 
 	private int startNo;
-
-	public PageDto(int currentPage, int totalPage, int pageSize) { // 외부(비지니스로직)에서 결정
-		this.currentPage = currentPage;
-		this.totalPage = totalPage;
+	
+	
+	public PageDto(int currentPage, int totalCount, int pageSize) { // 외부(비지니스로직)에서 결정
+		this.totalCount = totalCount;
 		this.pageSize = pageSize;
 
 		// totalPage = totalCount / pageSize 올림
@@ -26,10 +26,11 @@ public class PageDto {
 		this.currentPage = (currentPage < 1) ? 1 : currentPage;
 
 		// mysql의 limit 사용할 때,
-		int startNo = (this.currentPage - 1) * pageSize;
+		this.startNo = (this.currentPage - 1) * pageSize;
 
 		startPage = (this.currentPage - 1) / 10 * 10 + 1; // 페이지 크기에 따른 페이지 시작 위치
 		endPage = startPage + 9;
+		endPage = endPage > totalPage ? totalPage : endPage;
 	}
 
 }

@@ -33,7 +33,20 @@ ul .row {
 .row > li:nth-child(5){
 	flex-basis:20%;
 }
-
+.pagenum {
+	border: 1px solid gray;
+}
+.pagenum:hover {
+	background-color: gray;
+	color: pink;
+}
+.current {
+	background-color: gray;
+	color: white; 
+}
+a {
+	text-decoration: none;
+}
 
 /* 	li {
 		padding : 5px  20px;

@@ -6,6 +6,7 @@
 <%
 	request.setCharacterEncoding("utf-8");
 	int idx = Integer.parseInt(request.getParameter("idx"));
+	int pageNo = Integer.parseInt(request.getParameter("page"));
 	String subject = request.getParameter("subject");
 //	String password = request.getParameter("password");
 	String content = request.getParameter("content");
@@ -21,5 +22,5 @@
 	FreeboardDao dao = FreeboardDao.getInstance();
 	dao.update(dto);
 	
-	response.sendRedirect("updateAction.jsp?idx="+idx);
+	response.sendRedirect("detailAction.jsp?update=&idx="+idx + "&page=" + pageNo);
 %>

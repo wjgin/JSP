@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>동아리 커뮤니티</title>
-<link rel="stylesheet" href="../css/boardlist.css?v=3">
+<link rel="stylesheet" href="../css/boardlist.css">
 </head>
 <body>
 	<h3>동아리 커뮤니티</h3>
@@ -26,9 +26,10 @@
 			<c:forEach var="vo" items="${list}">
 				<!-- vo가 Freeboard타입  blists.getList() 실행-->
 				<li>
+				<c:set var="pno" value = "${pageDto.currentPage}"/>
 					<ul class="row">
 						<li>${vo.idx }</li>
-						<li><a href="detailAction.jsp?idx=${vo.idx}&page=1"
+						<li><a href="detailAction.jsp?idx=${vo.idx}&page=${pno}"
 							class="title">${vo.subject}</a> ...<span
 							style="color: orange; font-size: 80%;">(${vo.commentCount})
 						</span></li>
@@ -43,18 +44,26 @@
 			Go!&nbsp;&nbsp;<a class="button" href="insertView.jsp">글쓰기</a>&nbsp;&nbsp;
 			<a class="button" href="${pageContext.request.contextPath}">홈</a>&nbsp;&nbsp;작성글
 			총 개수 :
+			<c:out value="${pageDto.totalCount}"></c:out>
 		</div>
 		<!-- 글 목록 페이지 처리 : pagination-->
-		<div style="text-align:center;">
+		<div style="text-align: center;">
 			<hr>
 			<!-- 요청 url은 현재와 같고 parameter만 변경 -->
-			<a class="pagenum" href="?page=1">&lt;&lt;</a>
-			<a class="pagenum" href="?page=1">&lt;</a> <!-- 현재 페이지 10페이지 앞 -->
+			<c:if test="${pageDto.startPage != 1 }">
+				<a class="pagenum" href="?page=1">&lt;&lt;</a>
+				<a class="pagenum" href="?page=${pageDto.startPage-1}">&lt;</a>
+				<!-- 현재 페이지 10페이지 앞 -->
+			</c:if>
 			<c:forEach var="i" begin="${pageDto.startPage }" end="${pageDto.endPage }">
-				<a class="pagenum" href="?page=${i}">${i}</a>
-			</c:forEach> 
-			<a class="pagenum" href="?page=10">&gt;</a>
-			<a class="pagenum" href="?page=10">&gt;&gt;</a>
+				<a class="pagenum" 
+					<c:if test = "${pageDto.currentPage == i}">current</c:if> 
+				href="?page=${i}">${i}</a>
+			</c:forEach>
+			<c:if test="${pageDto.endPage != pageDto.totalPage}">
+				<a class="pagenum" href="?page=${pageDto.endPage+1}">&gt;</a> 
+				<a class="pagenum" href="?page=${pageDto.totalPage}">&gt;&gt;</a>
+			</c:if>
 		</div>
 
 

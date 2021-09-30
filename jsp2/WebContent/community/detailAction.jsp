@@ -14,8 +14,10 @@
 	
 	CommentDao cdao = CommentDao.getInstance();
 	List<Comment> cmts = cdao.getComment(idx);
-	request.setAttribute("cmtlist", cmts);
 	
+	request.setAttribute("cmtlist", cmts);
+	request.setAttribute("page", pageNo);
 	request.setAttribute("bean", bean);
+	
 	pageContext.forward("detailView.jsp");
 %>

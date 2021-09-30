@@ -4,6 +4,7 @@
 	pageEncoding="UTF-8"%>
 <%
 CommentDao dao = CommentDao.getInstance();
+int pageNo = Integer.parseInt(request.getParameter("page"));
 int mref;
 if (request.getParameter("del") != null) {
 	int cmtidx = Integer.parseInt(request.getParameter("cmtidx"));
@@ -24,5 +25,5 @@ if (request.getParameter("del") != null) {
 }
 
 dao.updateCountAll(mref);
-response.sendRedirect("detailAction.jsp?page=1&idx=" + mref);
+response.sendRedirect("detailAction.jsp?page=" + pageNo + "&idx=" + mref);
 %>

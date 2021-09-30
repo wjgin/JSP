@@ -107,6 +107,7 @@ span {
 	width:40%;
 	display: inline-block;
 }
+
 /* 비밀번호 모달 */
 .modal {
     display: none; /* Hidden by default */
