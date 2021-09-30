@@ -44,6 +44,21 @@
 			<a class="button" href="${pageContext.request.contextPath}">홈</a>&nbsp;&nbsp;작성글
 			총 개수 :
 		</div>
+		<!-- 글 목록 페이지 처리 : pagination-->
+		<div style="text-align:center;">
+			<hr>
+			<!-- 요청 url은 현재와 같고 parameter만 변경 -->
+			<a class="pagenum" href="?page=1">&lt;&lt;</a>
+			<a class="pagenum" href="?page=1">&lt;</a> <!-- 현재 페이지 10페이지 앞 -->
+			<c:forEach var="i" begin="${pageDto.startPage }" end="${pageDto.endPage }">
+				<a class="pagenum" href="?page=${i}">${i}</a>
+			</c:forEach> 
+			<a class="pagenum" href="?page=10">&gt;</a>
+			<a class="pagenum" href="?page=10">&gt;&gt;</a>
+		</div>
+
+
+
 		<!-- request.contextPath: request.getContextPath 메소드와 동일 결과 
 	listAction에서 pageContext 객체를 사용해서 listView.jsp로 요청이 전달 되었기에
 	pageContext.request로 함-->
