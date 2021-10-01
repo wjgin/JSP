@@ -22,7 +22,7 @@
 		<li>session : HttpSession, 웹서버 브라우저 사이의 연결 정보를 저장</li>
 		<li>application : ServletContext, 웹 애플리케이션 context 정보를 저장 </li>
 	</ul>
-	<li>Attribute를 저장하는 객체  : request -> session -> applicaion -> pageContext
+	<li>Object타입, Attribute를 저장하는 객체  : request -> session -> applicaion -> pageContext
 		<br>EL을 사용할때, 화살표 방향으로 저장된 애트리뷰트를 찾음</li>
 	<li>※EL에서 사용할 수 있는 객체는 jsp 내장객체와는 다름</li>
 </ul>

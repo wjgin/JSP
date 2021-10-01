@@ -38,6 +38,11 @@
 	<select id="passwordCheck" resultType="dto.Freeboard" parameterType="java.util.Map">
 		select * from freeboard where idx = #{idx} and password = #{password}
 	</select>
+	
+	<!-- 차후 cutomer.xml에 이동 -->
+	<select id="loginCheck" resultType = "dto.SessionDto" parameterType="java.util.Map" >
+		select * from customer where email = #{email} and password = #{password}
+	</select>
 </mapper>
 
 
