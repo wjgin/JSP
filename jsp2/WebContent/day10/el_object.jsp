@@ -21,6 +21,7 @@
 	<!-- session에 한번 저장된 attribute는 session의 timeout이나 종료 전까지는 남아있음.-->
 	<% application.setAttribute("data4", "hello java");
 	application.setAttribute("data", "hello java"); %>
+	<!-- 톰캣서버가 종료되거나 application이 서버에서 종료되면 그때 application 객체 소멸 -->
 
 	<dl>
 		<dt>pageScope</dt>

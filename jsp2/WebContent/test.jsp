@@ -13,7 +13,7 @@
 	String readIdx = "/12/34/159/147/";
 	boolean result = readIdx.contains("/344/");
 	out.print(result);
-	
+	out.print(application.getAttribute("data4"));
 	%>
 </body>
 </html>

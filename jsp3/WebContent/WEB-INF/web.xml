@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>jsp3</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- calhost:8082/jsp3/first.jcp일 때, 
+  	요청을 처리하는 Servlet(서블릿) Java 클래스는 com.jcpdev.action.Login
+  	참고: jsp2프로젝트까지는 요청을 처리하는것 jsp(톰캣서바가.java로 변환 -> 컴파일.class -> 실행 -> 응답(html형식)
+  -->
+  <servlet>
+  	<servlet-name>first</servlet-name>
+  	<servlet-class>com.jcpdev.action.Login</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>first</servlet-name>
+  	<url-pattern>/first.jcp</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
