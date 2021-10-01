@@ -8,6 +8,13 @@
 <title>동아리 커뮤니티 :: 자유게시판</title>
 </head>
 <body>
+<!-- 처음 요청이 들어오는 home.jsp session에 readIdx를 저장합니다. -->
+<c:if test="${sessionScope.readIdx==null}">
+	<% StringBuilder readIdx = new StringBuilder("/");
+		session.setAttribute("readIdx", readIdx);
+		%>
+</c:if>
+
 	<a href="community/listAction.jsp">커뮤니티 게시판</a>
 	<c:if test="${sessionScope.user == null}">
 		<a href="loginView.jsp">로그인</a>
