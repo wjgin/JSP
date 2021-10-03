@@ -12,12 +12,14 @@
   
   <!-- calhost:8082/jsp3/first.jcp일 때, 
   	요청을 처리하는 Servlet(서블릿) Java 클래스는 com.jcpdev.action.Login
-  	참고: jsp2프로젝트까지는 요청을 처리하는것 jsp(톰캣서바가.java로 변환 -> 컴파일.class -> 실행 -> 응답(html형식)
+  	참고: jsp2프로젝트까지는 요청을 처리하는것 jsp(톰캣서버가.java로 변환 -> 컴파일.class -> 실행 -> 응답(html형식)
   -->
   <servlet>
+  <!-- 서블릿 이름과 해당하는 클래스를 지정 -->
   	<servlet-name>first</servlet-name>
   	<servlet-class>com.jcpdev.action.Login</servlet-class>
   </servlet>
+  <!-- url요청이 들어올 때, 매핑할 서블릿 이름 -->
   <servlet-mapping>
   	<servlet-name>first</servlet-name>
   	<url-pattern>/first.jcp</url-pattern>
