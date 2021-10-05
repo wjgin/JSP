@@ -10,12 +10,12 @@
 		frm1.submit();
 	}
 </script>
-<link rel="stylesheet" href="../css/temp.css">
+<link rel="stylesheet" href="css/temp.css">
 </head>
 <body>
 	<h3>동아리 커뮤니티 글 수정</h3>
 	<hr>
-	<form name="frm1" method="post" action="updateSave?page=${page}">
+	<form name="frm1" method="post" action="modify.do?page=${page}">
 	<!-- url표시 없이 파라미터 전달 -->
 	<input type="hidden" name = "idx" value = "${bean.idx}">
 
