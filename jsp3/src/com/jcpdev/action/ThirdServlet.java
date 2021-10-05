@@ -3,6 +3,7 @@ package com.jcpdev.action;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +19,9 @@ public class ThirdServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 3th.jsp 파일을 view 파일로 사용
+		RequestDispatcher rd = request.getRequestDispatcher("3th.jsp");
+		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,6 +36,9 @@ public class ThirdServlet extends HttpServlet {
 		out.print("<h4>파라미터</h4>");
 		out.print("name:" + name);
 		out.print("age: " + age);
+		
+		// 요청메소드가 post인 경우=> 데이터 저장(db insert) 동작
+		// response.sendRedirect(url);
 	}
 
 }

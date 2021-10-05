@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+h3 {
+     text-align: center;
+    /* border-bottom: 1px solid gray; */
+}
+table {
+	width: 70%;
+	margin: auto;
+}
+tr{
+	width: 100%;
+}
+th {
+    background-color: tomato;
+    border-radius: 10px;
+    text-align: center;
+    width: 20%;
+}
+.button{
+    display: flex;
+    justify-content: center;
+}
+input[type=submit], input[type=button], input[type=reset] { 
+    margin: 0px 10%;
+    background-color: rgb(241, 158, 158);
+}
+input[type=text], input[type=password]{
+	width: 100%;
+}
+textarea{
+	width: 100%;
+}
