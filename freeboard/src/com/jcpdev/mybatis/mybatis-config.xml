@@ -12,6 +12,7 @@
   	<typeAlias type="com.jcpdev.dto.Freeboard" alias = "Freeboard"/>
   	<typeAlias type="com.jcpdev.dto.Comment" alias = "Comment"/>
   	<typeAlias type="com.jcpdev.dto.SessionDto" alias = "SessionDto"/>
+  	<typeAlias type="com.jcpdev.dto.Gallery" alias = "Gallery"/>
   </typeAliases>
   
   <!--  db 연결정보 -->
@@ -29,6 +30,7 @@
   <mappers>
     <mapper resource="com/jcpdev/mybatis/freeboard.xml"/>
     <mapper resource="com/jcpdev/mybatis/comment.xml"/>
+    <mapper resource="com/jcpdev/mybatis/gallery.xml"/>
   </mappers>
 </configuration>
 

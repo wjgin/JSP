@@ -14,6 +14,7 @@ import com.jcpdev.controller.action.ActionForward;
 import com.jcpdev.controller.action.CommentAction;
 import com.jcpdev.controller.action.DeleteAction;
 import com.jcpdev.controller.action.DetailAction;
+import com.jcpdev.controller.action.GalleryListAction;
 import com.jcpdev.controller.action.InsertAction;
 import com.jcpdev.controller.action.ListAction;
 import com.jcpdev.controller.action.LoginAction;
@@ -85,7 +86,15 @@ public class FrontController extends HttpServlet {
 		} else if(spath.equals("/logout.do")) {
 			Action action = new LogoutAction();
 			forward = action.execute(request, response);
+		} else if(spath.equals("/gallery.do")) {
+			path = "gallery/gallery.jsp";
+			forward = new ActionForward(false, path);
+		}else if(spath.equals("/regist.do")) {
+			Action action = new GalleryListAction();
+			forward = action.execute(request, response);
 		}
+		
+		
 		
 		if(!forward.isRedirect()) { // 타입이 boolean이면 getter가 isXXX
 			RequestDispatcher rd = request.getRequestDispatcher(forward.getUrl());
