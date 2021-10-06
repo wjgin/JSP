@@ -12,10 +12,10 @@ import com.jcpdev.dto.Freeboard;
 public class InsertAction implements Action {
 
 	@Override
-	public boolean execute(HttpServletRequest request, HttpServletResponse response)
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		boolean isRedirect = true;
+		ActionForward forward = new ActionForward();
 		
 		request.setCharacterEncoding("utf-8");
 		String subject = request.getParameter("subject");
@@ -34,10 +34,10 @@ public class InsertAction implements Action {
 		FreeboardDao dao = FreeboardDao.getInstance();
 		dao.insert(dto);
 		
-		// response.sendRedirect("insertView.jsp");
+		forward.isRedirect = true;
+		forward.url = "list.do";
 		
-		
-		return isRedirect;
+		return forward;
 	}
 
 }

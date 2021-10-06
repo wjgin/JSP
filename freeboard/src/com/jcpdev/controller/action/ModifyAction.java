@@ -12,10 +12,10 @@ import com.jcpdev.dto.Freeboard;
 public class ModifyAction implements Action{
 
 	@Override
-	public boolean execute(HttpServletRequest request, HttpServletResponse response)
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		boolean isRedirect = true;
+		ActionForward forward = new ActionForward();
 		
 		request.setCharacterEncoding("utf-8");
 		int idx = Integer.parseInt(request.getParameter("idx"));
@@ -31,7 +31,11 @@ public class ModifyAction implements Action{
 		FreeboardDao dao = FreeboardDao.getInstance();
 		dao.update(dto);
 		
-		return isRedirect;
+		
+		forward.isRedirect = true;
+		forward.url = "detail.do?idx="+idx+"&page="+pageNo;
+		
+		return forward;
 	}
 
 }

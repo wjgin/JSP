@@ -54,8 +54,9 @@
 				href="list.do?page=${page}">목록</a>
 		</div>
 		<!-- 메인글 출력 끝 -->
+		
 		<!-- 댓글 시작 -->
-		<form action="commentAction.jsp?page=${page}" method="post" name="frmCmt">
+		<form action="comment.do?page=${page}" method="post" name="frmCmt">
 		<input type = "hidden" name = "mref" value = "${bean.idx}">
 			<hr class="line">
 			<div>
@@ -107,7 +108,7 @@
 			<span class="close">&times;</span><br>
 			<div style="padding: 0px 20px;">
 				<b>글비밀번호</b><br> <br>
-				<form action="deleteAction.jsp" method="post" name="frmPassword" onsubmit = "return deleteOk()">
+				<form action="delete.do" method="post" name="frmPassword" onsubmit = "return deleteOk()">
 					<input type = "hidden" name = "page" value = "${page}">
 					<input type="hidden" name="idx" value="${bean.idx }"> <input
 						type="password" name="password" size="10"> 

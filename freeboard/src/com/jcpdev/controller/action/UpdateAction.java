@@ -12,9 +12,10 @@ import com.jcpdev.dto.Freeboard;
 public class UpdateAction implements Action{
 
 	@Override
-	public boolean execute(HttpServletRequest request, HttpServletResponse response)
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		ActionForward forward = new ActionForward();
 		boolean isRedirect = false;
 		
 		int idx = Integer.parseInt(request.getParameter("idx"));
@@ -27,7 +28,10 @@ public class UpdateAction implements Action{
 		request.setAttribute("page", pageNo);
 		request.setAttribute("bean", dto);
 		
-		return isRedirect;
+		forward.isRedirect = false;
+		forward.url = "community/update.jsp";
+		
+		return forward;
 	}
 
 }

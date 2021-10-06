@@ -10,9 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jcpdev.controller.action.Action;
+import com.jcpdev.controller.action.ActionForward;
+import com.jcpdev.controller.action.CommentAction;
+import com.jcpdev.controller.action.DeleteAction;
 import com.jcpdev.controller.action.DetailAction;
 import com.jcpdev.controller.action.InsertAction;
 import com.jcpdev.controller.action.ListAction;
+import com.jcpdev.controller.action.LoginAction;
+import com.jcpdev.controller.action.LogoutAction;
 import com.jcpdev.controller.action.ModifyAction;
 import com.jcpdev.controller.action.UpdateAction;
 
@@ -25,48 +30,11 @@ public class FrontController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		boolean isRedirect = false;
-		
-		String spath = request.getServletPath();
-		String path = "home.jsp";
-		String url = "./";
-		
-		if(spath.equals("/update.do")) {
-			Action action = new UpdateAction();
-			isRedirect = action.execute(request, response);
-			path = "community/update.jsp";
-		}
-		
-		if(!isRedirect) {
-			RequestDispatcher rd = request.getRequestDispatcher(path);
-			rd.forward(request, response);
-		} else {
-			response.sendRedirect(url);
-		}
 		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		boolean isRedirect = false;
-		
-		String spath = request.getServletPath();
-		String path = "home.jsp";
-		String url = "./";
-		
-		if(spath.equals("/modify.do")) {
-			Action action = new ModifyAction();
-			isRedirect = action.execute(request, response);
-			url = "detail.do";
-		}
-		
-		if(!isRedirect) {
-			RequestDispatcher rd = request.getRequestDispatcher(path);
-			rd.forward(request, response);
-		} else {
-			response.sendRedirect(url);
-		}
-		
 	}
 	
 	
@@ -77,38 +45,54 @@ public class FrontController extends HttpServlet {
 		 * System.out.println(request.getContextPath());
 		 * System.out.println(request.getServletPath());
 		 */
-		boolean isRedirect = false;
+		ActionForward forward = null;
+		// boolean isRedirect = false;
 		
 		String spath = request.getServletPath();
 		String path = "home.jsp";
-		String url = "./";
+		// String url = "./";
 		
 		if(spath.equals("/list.do")) {
 			Action action = new ListAction();
-			isRedirect = action.execute(request, response);
-			path = "community/list.jsp";
+			forward = action.execute(request, response);
 		} else if (spath.equals("/login.do")) {
 			path = "login.jsp";
+			forward = new ActionForward(false, path);
 		} else if(spath.equals("/insert.do")) {
 			path = "community/insert.jsp";
+			forward = new ActionForward(false, path);
 		} else if(spath.equals("/detail.do")) {
 			Action action = new DetailAction();
-			isRedirect = action.execute(request, response);
-			path = "community/detail.jsp";
-		} else if(spath.equals("/logout.do")) {
-			path = "logout.jsp";
-		} else if(spath.equals("/save.do")) {
+			forward = action.execute(request, response);
+		}  else if(spath.equals("/save.do")) {
 			Action action = new InsertAction();
-			isRedirect = action.execute(request, response);
-			url = "list.do";
-		}  
+			forward = action.execute(request, response);
+		} else if(spath.equals("/update.do")) {
+			Action action = new UpdateAction();
+			forward = action.execute(request, response);
+		} else if(spath.equals("/modify.do")) {
+			Action action = new ModifyAction();
+			forward = action.execute(request, response);
+		} else if(spath.equals("/delete.do")) {
+			Action action = new DeleteAction();
+			forward = action.execute(request, response);
+		} else if(spath.equals("/comment.do")) {
+			Action action = new CommentAction();
+			forward = action.execute(request, response);
+		} else if(spath.equals("/loginAction.do")) {
+			Action action = new LoginAction();
+			forward = action.execute(request, response);
+		} else if(spath.equals("/logout.do")) {
+			Action action = new LogoutAction();
+			forward = action.execute(request, response);
+		}
 		
-		if(!isRedirect) {
-			RequestDispatcher rd = request.getRequestDispatcher(path);
+		if(!forward.isRedirect()) { // 타입이 boolean이면 getter가 isXXX
+			RequestDispatcher rd = request.getRequestDispatcher(forward.getUrl());
 			rd.forward(request, response);
 		} else {
-			response.sendRedirect(url);
-		}
+			response.sendRedirect(forward.getUrl());
+		} 
 		
 	}
 }

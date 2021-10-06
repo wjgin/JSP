@@ -16,10 +16,10 @@ import com.jcpdev.dto.PageDto;
 public class ListAction implements Action {
 
 	@Override
-	public boolean execute(HttpServletRequest request, HttpServletResponse response)
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		boolean isRedirect = false;
+		
+		ActionForward forward = new ActionForward();
 		
 		// 비지니스 로직을 처리하는 jsp 파일
 		FreeboardDao dao = FreeboardDao.getInstance();
@@ -46,7 +46,10 @@ public class ListAction implements Action {
 		request.setAttribute("pageDto", pageDto);	// 페이지처리에 필요한 것들
 		// pageContext.forward("listView.jsp");
 		
-		return isRedirect;
+		forward.isRedirect = false;
+		forward.url = "community/list.jsp";
+		
+		return forward;
 	}
 
 }
