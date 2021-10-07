@@ -18,7 +18,7 @@ public class GalleryDao {
 	
 	SqlSessionFactory sqlFactory = SqlSessionBean.getSessionFactory();
 	
-	public List<Gallery> getAll() {
+	public List<Gallery> getList() {
 		List<Gallery> list = null;
 		SqlSession mapper = sqlFactory.openSession();
 		list = mapper.selectList("gallery.getAll");

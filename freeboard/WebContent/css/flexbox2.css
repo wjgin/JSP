@@ -1,0 +1,73 @@
+@charset "UTF-8";
+
+html, body {
+	height: 100%;
+}
+
+/* a태그 모양 바꾸기 */
+a {
+	text-decoration: none;
+	color: black;
+}
+nav a {
+	text-decoration: none;
+	color: white;
+}
+
+.container li {
+	list-style: none;
+	font-size: 1.2em;
+	padding: 8px 12px;
+	margin: 0px 10px
+}
+
+/* hover : 마우스가 올라갔을 경우 */
+.container li:hover {
+	background-color: tomato;
+	list-style: none;
+	font-size: 1.2em;
+	border-radius: 3px;
+	padding: 8px 12px;
+	margin: 0px 10px
+}
+
+.container {
+	background-color: brown;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 8px 0px;
+}
+
+.map_wrap {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.footer {
+	border-top: 3px solid tomato;
+}
+
+.footer a, p {
+	/* 폰트사이즈는 부모태그 사이즈 기준 */
+	font-size: 0.8em;
+}
+#login{
+	margin-left: 10%;
+	font-size: 0.8em;
+	display: flex;
+	align-items: center;
+}
+/* 반응형으로 레이아웃 변경(해상도에 따른 변경) 
+         해상도 폭이 768 미만이 되었을 때,*/
+@media screen and (max-width: 768px) {
+	.container {
+		background-color: brown;
+		padding: 8px 0px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+	}
+}

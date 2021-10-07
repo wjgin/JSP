@@ -15,6 +15,7 @@ import com.jcpdev.controller.action.CommentAction;
 import com.jcpdev.controller.action.DeleteAction;
 import com.jcpdev.controller.action.DetailAction;
 import com.jcpdev.controller.action.GalleryListAction;
+import com.jcpdev.controller.action.GalleryResistAction;
 import com.jcpdev.controller.action.InsertAction;
 import com.jcpdev.controller.action.ListAction;
 import com.jcpdev.controller.action.LoginAction;
@@ -87,10 +88,10 @@ public class FrontController extends HttpServlet {
 			Action action = new LogoutAction();
 			forward = action.execute(request, response);
 		} else if(spath.equals("/gallery.do")) {
-			path = "gallery/gallery.jsp";
-			forward = new ActionForward(false, path);
-		}else if(spath.equals("/regist.do")) {
 			Action action = new GalleryListAction();
+			forward = action.execute(request, response);
+		}else if(spath.equals("/regist.do")) {
+			Action action = new GalleryResistAction();
 			forward = action.execute(request, response);
 		}
 		
