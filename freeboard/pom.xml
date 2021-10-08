@@ -25,7 +25,7 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	
 	<!-- 의존성: maven을 이용한 라이브러리 가져오기 -->
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->

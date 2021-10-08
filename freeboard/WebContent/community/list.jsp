@@ -57,8 +57,7 @@
 					<a class="pagenum" href="?page=${pageDto.startPage-1}">&lt;</a>
 					<!-- 현재 페이지 10페이지 앞 -->
 				</c:if>
-				<c:forEach var="i" begin="${pageDto.startPage }"
-					end="${pageDto.endPage }">
+				<c:forEach var="i" begin="${pageDto.startPage }" end="${pageDto.endPage }">
 					<a class="pagenum"
 						<c:if test = "${pageDto.currentPage == i}">current</c:if>
 						href="?page=${i}">${i}</a>

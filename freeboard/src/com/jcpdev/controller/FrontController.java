@@ -41,12 +41,13 @@ public class FrontController extends HttpServlet {
 	
 	
 	// 요청 method 구별없이 실행 -> doGet() 또는 doPost() 메소드 실행 내용 있으면 실행
+	// service가 우선 동작하기에 doGet, doPost와 함께 사용할 수 없는 듯 함
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*
-		 * System.out.println(request.getContextPath());
-		 * System.out.println(request.getServletPath());
-		 */
+		// ContextPath() => /프로젝트 이름까지 ex)/freeboard
+		// System.out.println(request.getContextPath());
+		// ServletPath() => /프로젝트이름 이후 ex)/list.do
+		// System.out.println(request.getServletPath());
 		ActionForward forward = null;
 		// boolean isRedirect = false;
 		
